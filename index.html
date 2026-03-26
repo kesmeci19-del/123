@@ -441,6 +441,7 @@ async function analyze(){
     const mt=capturedURL.split(':')[1].split(';')[0];
     const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
+      mode:'cors',
       headers:{'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
       body:JSON.stringify({
         model:'claude-sonnet-4-5',
@@ -490,7 +491,7 @@ SADECE JSON formatında yanıt ver, başka hiçbir şey yazma:
     enableExports();
     st('done',`✓ Doğrultu: ${result.strike_angle}° ${result.strike_direction} · Eğim: ${result.dip_angle}° ${result.dip_direction} · %${result.confidence} güven`);
   } catch(e){
-    st('err','Hata: '+e.message);
+    st('err','Hata: '+e.message+' | API_KEY uzunluk: '+(API_KEY?API_KEY.length:0));
     document.getElementById('real-res').innerHTML=`<div style="font-size:11px;color:#E85530;padding:9px;background:rgba(232,85,48,0.1);border-radius:6px;border:1px solid rgba(232,85,48,0.25)">Analiz hatası: ${e.message}</div>`;
     document.getElementById('ph-res').style.display='none';
     document.getElementById('real-res').style.display='block';
