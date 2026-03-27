@@ -425,7 +425,7 @@ function stopSensors(){
 }
 
 const API_KEY = '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';
-const PROXY_URL = 'https://rough-waterfall-bba9.mrtates3509.workers.dev';
+const https://rough-waterfall-bba9.mrtates3509.workers.dev_URL = 'https://rough-waterfall-bba9.mrtates3509.workers.dev';
 async function analyze(){
   if(!capturedURL) return;
   const btn=document.getElementById('anlz-btn');
@@ -440,7 +440,7 @@ async function analyze(){
   try{
     const b64=capturedURL.split(',')[1];
     const mt=capturedURL.split(':')[1].split(';')[0];
-    const res=await fetch(PROXY_URL,{
+    const res=await fetch(https://rough-waterfall-bba9.mrtates3509.workers.dev_URL,{
       method:'POST',
       headers:{'Content-Type':'application/json','x-api-key':API_KEY},
       body:JSON.stringify({
