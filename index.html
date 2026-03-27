@@ -425,6 +425,7 @@ function stopSensors(){
 }
 
 const API_KEY = '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';
+const PROXY_URL = 'https://rough-waterfall-bba9.mrtates3509.workers.dev';
 async function analyze(){
   if(!capturedURL) return;
   const btn=document.getElementById('anlz-btn');
@@ -439,10 +440,9 @@ async function analyze(){
   try{
     const b64=capturedURL.split(',')[1];
     const mt=capturedURL.split(':')[1].split(';')[0];
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
+    const res=await fetch(PROXY_URL,{
       method:'POST',
-      mode:'cors',
-      headers:{'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      headers:{'Content-Type':'application/json','x-api-key':API_KEY},
       body:JSON.stringify({
         model:'claude-sonnet-4-5',
         max_tokens:1000,
